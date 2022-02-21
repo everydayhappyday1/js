@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 데이터타입: number, str, boolean, undefined, null -->
+    <!-- 개발자도구 들어가서 보는 것 잊지 않기 -->
+    <script>
+        var i1 = 1;
+        var i2 = 3.14;
+        var i3 = i1 + i2;
+        console.log(i3);
+
+        var str1 = "문자1";
+        var str2 = "문자2";
+        var str3 = str1 + str2;
+        console.log(str3);
+
+        var bool1 = true;
+        var bool2 = false;
+        console.log (bool1, bool2);
+
+        //undefined: 변수 선언은 하였으나, 초기값이 지정되지 않은 경우
+        //개발자도구에서 undefined뜨면 변수 초기화 하러 가야 함.
+        var un;
+        console.log(un);
+
+        //null: 초기화는 했지만, 값이 존재하지 않는 경우
+        var tag = document.getElementById("test");
+        console.log(tag);
+
+        //각각의 타입 확인 typeof()
+        console.log(typeof(i1));
+        console.log(typeof(str1));
+        console.log(typeof(bool1));
+        console.log(typeof(un));
+        console.log(typeof(tag));
+
+
+
+        //형변환 : toString(), parseInt(), parseFloat()
+        var x = 1;
+        console.log(x.toString()); // 정수 -> 문자열
+        console.log(typeof(x)); //이거 뜨게 하려면
+        x = x.toString();
+        console.log(typeof(x)); // 이렇게 해야 함
+
+        var y = "100";
+        console.log(parseInt(y)); // 문자열 -> 정수 
+        var z = "3.14";
+        console.log(parseFloat(z)); // 문자열 -> 실수
+
+    </script>
+</body>
+</html>

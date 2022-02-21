@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = 20;
+        var b = 10;
+        if(a>b && true){
+            console.log("a가 더 큽니다.");
+        }else{
+            console.log("b가 더 큽니다.");
+        }
+        console.log("---------------------------");
+        console.log("---------------------------");
+        console.log("---------------------------");
+
+
+
+        // 랜덤함수, if문
+        var point = parseInt(Math.random()*101);
+        console.log('점수: ', point);
+
+        if(point >= 90){
+            if(point >=95){
+                console.log('A+');
+            }else{
+                console.log('A');
+            }
+        }else if(point >= 80){
+            console.log('B');
+        }else{
+            console.log('C');
+        }
+        console.log("---------------------------");
+        console.log("---------------------------");
+        console.log("---------------------------");
+
+        //switch문
+        console.log(point/10);
+        switch(parseInt(point/10)){
+            case 9:
+                console.log('A');
+                break;
+            case 8:
+                console.log('B');
+                break;
+            case 7:
+                console.log('C');
+                break;
+            default :
+                console.log('D');
+                break;
+        }
+
+
+    </script>
+</body>
+</html>
