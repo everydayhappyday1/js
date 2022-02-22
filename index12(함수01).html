@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>    
+
+
+
+        // 함수호출
+        // 선언적 함수는 함수 만들기 전에 호출 가능 --> 호이스팅 
+        var a = func01(); // 리턴이 없는데 어떤 값이 나오나? 
+        var b = func02();
+        var c = func03();
+
+        console.log(a); // 리턴이 없다면 undefined
+        console.log(b);
+        console.log(c);
+
+        // 함수 기본 모형
+        function func01(){
+            console.log("func01 실행");
+        }
+        function func02(){
+            console.log("func02 실행");
+            return "func02"; //반환하고 싶은게 있으면 return을 쓴다. 
+        }
+        function func03(){
+            console.log("func03 실행");
+            return "func03"; //반환
+        }
+        
+        //------------------------------------------------------
+        //js는 함수를 변수에 저장할 수 있다. = 변수로 함수 호출하기
+        var d = func03; // 변수 d에 펑션 저장
+        console.log(d); // 변수 d에 무엇이 저장되었는지 확인
+        d(); // 호출해서 실행
+        // 다만 선언적 함수는 함수를 만들기 전 함수 호출이 가능하나,
+        // 변수에 함수를 저장하는 경우는 
+        // 함수 선언이 위로 올라가고 아래에서 호출을 해야한다. 
+
+    </script>
+</body>
+</html>

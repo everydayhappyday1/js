@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function add(){
+            var name = "홍길동";
+            return {
+                setName : function(aaa){ // 세터 메서드
+                    name = aaa;
+                },
+                getName : function(){ // 게터 메서드
+                    return name;
+                }
+            };  // 중괄호 {키:값}
+        }
+
+        var result = add();
+        console.log(result);
+        console.log(result.getName()); // 홍길동 꺼내기
+        result.setName("이순신");
+        console.log(result.getName());
+    </script>
+</body>
+</html>

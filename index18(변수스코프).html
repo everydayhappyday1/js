@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 함수 레벨 스코프: var : 변수중복선언가능 : ???
+        // 블록 레벨 스코프: let : 변수중복선언불가 : 자바와 동일
+
+
+
+
+        //js 변수의 유효범위 - 함수 블록 (스코프)
+        // 함수를 벗어나며 ㄴ사라진다.
+
+        //function aaa(){
+        //    var x = 1; // 지역변수
+        //}
+        //console.log(x); // 함수에서 만들어진 변수는 지역변수로, 함수 밖에서 사용 불가
+
+        if(true){
+            var x = 100;
+        }
+        console.log(x); // 사용 가능함. 왜냐면 함수 안에서 선언된게 아니니까
+                        // if는 조건문이다. 따라서 x는 전역변수처럼 사용 가능 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // 중괄호 스코프
+        var num1=10;
+        if(num1===10){
+            var num1=20;
+        }
+        console.log(num1); // 결과는 20
+        // JS의 var 변수의 범위는 함수이기 때문이다. 
+
+
+
+
+
+        // 함수 스코프 (자바 지역변수 개념)
+        var num2 = 100;
+        function add(){
+            var num2 = 200;
+        }
+        add(); // 함수의 실행이 끝나면 함수 안의 변수는 사라진다.
+        console.log(num2); // 따라서 결과는 100 // 함수 벗어났으니까 사용 X
+       
+
+
+
+        //변수 스코프
+        let num3 = 100;
+        if (num3 === 100){
+            let num3 = 200; //if 함수를 벗어나면 사라진다.
+        }
+        console.log(num3); //결과는 100 // 이프문 안에서 만든 넘3은 없어졌으니까 
+
+
+
+        let num4 = 100;
+        function add2(){
+            let num4=200; //if 함수를 벗어나면 사라진다.
+        }
+        add2();
+        console.log(num4);
+    </script>
+
+</body>
+</html>
