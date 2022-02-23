@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 자바스트립트의 스크립트는 보통 아래쪽에 둔다. 동작하려고 버튼 찾을 때 버튼이 스크립트보다 아래 있으면 못 찾는다. -->
+
+    <!-- 기본이벤트:
+        1. 태그를 취득한다.
+        2. 취득한 태그에 함수를 넣는다.
+     -->
+
+
+     <button type="button" id="btn">기본 이벤트</button>
+     <script>
+         // 기본 이벤트: 태그를 취득해와서 직접 이벤트를 지정하는 방식
+         var a = document.getElementById("btn"); //id가 btn인 태그를 선택한다는 뜻
+         a.onclick = function(){
+            alert("기본이벤트");
+         }
+
+     </script>
+</body>
+</html>

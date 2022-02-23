@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 스크립트를 위에 둠
+        // confirm ("질문")  클릭하면 true 아니오 클릭하면 false 반환
+        // 이동하시겠습니까 ? 질문에 확인하면 이동, 아니면 그대로 있으면 됨
+        // location.href="경로";
+
+        window.onload = function(){
+            var btn1 = document.getElementById(btn)
+            var btn1 = document.getElementById(btn2)
+
+            btn.addEventListener("click",function(){
+                anser = confirm("네이버로 이동하시겠습니까?");
+                if(anser == true){
+                    location.href="https://www.naver.com"
+                }
+            });
+            btn2.addEventListener("click",function(){
+                anser2 = confirm("구글로 이동하시겠습니까?");
+                if(anser2 ==true){
+                    location.href="https://www.google.com"
+                }
+            });
+
+
+
+        }
+    </script>
+
+    <button id="btn" >네이버이동</button>
+    <button id="btn2">구글로 이동</button>
+</body2>
+</html>

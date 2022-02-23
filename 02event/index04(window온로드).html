@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    
+
+
+    <!-- 스크립트를 하위에 두어야 한다 -->
+    <!-- 어쩔 수 없이 상위에 스크립트를 두어야 할 경우 -->
+    <!-- window = 자바의object 객체 (최상위 객체)  -->
+    <!-- window는 자바스크립트의 최상위 객체이다. -->
+
+    <!-- onload - 페이지가 로드 끝난 후에 실행하라는 뜻
+    단, onload 이벤트는 페이지마다 1개만 사용할 수 있다. -->
+
+    <script>
+        window.onload = function(){
+            var btn = document.getElementById("btn");
+            console.log(btn);
+        }
+    </script>
+
+
+    <button type="button" id="btn"> 온로드란 ? </button>
+    
+</body>
+</html>

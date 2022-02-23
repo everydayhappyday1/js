@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>    
+        // 스크립트에서 원격에 있는 데이터를 가져오거나 보낼 수 있는데,
+        // 문자열의 형식으로 변경할 필요가 있다.
+
+        var data = [
+            {id:1, title: "hi", content: "쀍!"},
+            {id:2, title: "bye", content: "헑!"},
+            {id:3, title: "hello", content: "힣!"},
+        ]
+        //console.log(data); // 이렇게는 데이터를 보낼 수 없다. 
+        //JSON.stringify()  --> JSON을 문자열로
+        var str = JSON.stringify(data);
+        console.log(str);
+        //위에 // 없애고 비교해보자, f12, f5에서 보이는 내용이 다름
+
+
+        // 문자열 반환되서 돌아온다면?
+        // 다시 JSON형으로 형변환 해줘야 한다.
+        // JSON.parse()--> 문자열을 JSON으로 형변환
+        // 다시 배열 안의 객체로 내용이 바뀜
+        var obj = JSON.parse(str);
+        console.log(obj);
+
+        //주의!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+        // 단, 문자열을 JSON 형식으로 변경할 때 반드시 지켜야 할 것이 있다.
+        // key, value 를 반드시 ""로 묶어야 한다. 숫자는 괜찮다.
+
+
+        // var test = JSON.parse(  "{ id : \"aaa123\" }"  ) 는 에러: 키값도 쌍따옴표로 묶여야 한다.
+        var test = JSON.parse(  "{ \"id\" : \"aaa123\" }"  )  // 쌍따옴표 안에 쌍따옴표 쓸 때 \를 붙인다.
+        console.log(test);
+
+    </script>
+</body>
+</html>

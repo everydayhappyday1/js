@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 표준이벤트 -->
+    <button type="button" id="btn">표준 이벤트</button>
+    <script>
+        var btn=document.getElementById("btn");
+        //btn.addEventListener("click", func); // on키워드는 제외한다.
+                                             // 함수 실행이 아니고 함수 전달이니까 ()를 뺀다. 
+                                             // func()는 실행의 의미이다.
+        // function func(){
+        //     alert("표준이벤트 ㅎㅎ ");
+        // }
+
+
+        btn.addEventListener("click", function(){
+            alert("표준이벤트");
+        }); // 바로 익명함수로 넣을 수도 있다.
+
+
+        // 표준 이벤트는 동일한 이벤트를 여러개 적용할 수 있다.
+        // 기본 이벤트는 마지막 것만 적용된다. 비교해보기 
+        btn.addEventListener("click",function(){
+            alert("표준이벤트222");
+        });
+        
+    </script>
+</body>
+</html>

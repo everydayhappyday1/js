@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1. 다음 radio 버튼을 클릭했을 때 동의했습니다 경고창을 띄우고 value 값을 확인하시오 -->
+    <input type="checkbox" value="1" onclick="xxx(this)"> 조항1 <!--버튼을 누르면 실행해야하니까 xxx()를 온클릭에 넣는다.-->
+    <input type="checkbox" value="2" onclick="xxx(this)"> 조항2
+    <input type="checkbox" value="3" onclick="xxx(this)"> 조항3
+    <input type="checkbox" value="4" onclick="xxx(this)"> 조항4
+    <script>
+        // 똑같은 이벤트를 줘야하니까 inline 이벤트 사용해야 한다.
+        function xxx(a){ // 체크한 나 자신의 value 속성 얻기: a
+            alert(a.value+" 항목을 동의했습니다.");
+        }
+    </script>
+    <hr>
+
+
+    <!-- 2. 값 받아오기  -->
+    ID: <input type="input" id="id">
+    기억하기 <input type="checkbox" id="remember">
+    <button type="button" id="check2">확인</button>
+    <script>
+        var check2 = document.getElementById("check2");
+        // 표준이벤트로 걸어보기
+        check2.addEventListener("click", function(){
+            console.log("실행됨");
+            var id = document.getElementById("id");
+            var remember = document.getElementById("remember");
+            console.log(id.value);
+            console.log(remember.checked); // checked = true
+
+        });
+    </script>
+</body>
+</html>

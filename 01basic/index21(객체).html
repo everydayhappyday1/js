@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // JS의 객체 JSON
+        var person = {name:'홍길동', age:20, inter:[1,2,3]};
+        console.log(person);
+
+        // 객체 안에 값을 사용하는 방법 1st
+        //console.log(person.name);
+        //console.log(person.age);
+        //console.log(person.inter);
+        //console.log(person.inter[0]);
+
+
+        // 객체 안에 값을 사용하는 방법 2nd - 자바의 해쉬맵과 같다.
+        console.log(person["name"]);
+        console.log(person["age"]);
+        console.log(person["inter"]);
+        console.log(person["inter"][0]);
+
+        console.log("----------------------------------------------------");
+
+
+        var exam = {math:80, kor:70, eng:90};
+        var park = {name:"홍길자", exam:exam};
+        console.log(park);
+        console.log(park.name); // park["name"]
+        console.log(park.exam.math) //park.exam["math"]["eng"]
+        console.log(park["exam"]);
+        
+
+        console.log("----------------------------------------------------");
+        // 배열 안에 객체
+        var arr = [
+            {id:1, title:"aaa", content:"헐"}, 
+            {id:2, title:"bbb", content:"헉"}, 
+            {id:3, title:"ccc", content:"흐앙"}, // 마지막에 콤마 써도 됨. 안써도 됨
+        ];
+        console.log(arr);
+        console.log(arr[0]);
+        console.log(arr[0].id); // arr[0]["id"]
+        console.log(arr[0].title); // arr[0]["title"]
+        console.log(arr[0].content); // arr[0]["title"]
+        
+
+
+
+        console.log("----------------------------------------------------");
+        //실습
+        // 반복문을 이용해서 각각의 요소를 출력하고
+        // subject는 중첩 반복문으로 요소를 전부 출력하세요
+        var arr2 = [
+            {
+                name:"노소은",
+                age:20,
+                subject:["Java, JSP, Spring"],
+                birth:20200101
+            },
+            {
+                name:"이순신",
+                age:25,
+                subject:["CSS, Oracle"],
+                birth:20020202,
+            }
+        ];
+
+
+        for(var i=0; i<arr2.length; i++){
+            console.log(arr2[i].name);
+            console.log(arr2[i].age);
+            for(var j=0; j<=arr2[i].subject.length; j++){
+                console.log(arr2[i].subject[j]);
+            }
+            console.log(arr2[i].birth);
+        }
+  
+        
+        
+    </script>
+</body>
+</html>
