@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="number" value="0" id="result">
+    <button type="button" onclick="calc(this)">+</button>
+    <button type="button" onclick="calc(this)">-</button>
+
+    <script>
+        function calc(x){
+            var result = document.getElementById("result");
+            //x태그가 +를 가지고 있다면
+            console.log(x.innerHTML);
+            if(x.innerHTML == "+"){
+                result.value++;
+            }else{
+                if(result.value == 0){
+                    alert("0보다 작을 수 없습니다.");
+                    return; //리턴은 함수 종료
+                }
+                result.value--;
+            }            
+        }
+    </script>
+
+</body>
+</html>

@@ -29,11 +29,14 @@
         var check2 = document.getElementById("check2");
         // 표준이벤트로 걸어보기
         check2.addEventListener("click", function(){
-            console.log("실행됨");
+            //console.log("실행됨");
             var id = document.getElementById("id");
             var remember = document.getElementById("remember");
             console.log(id.value);
             console.log(remember.checked); // checked = true
+            if(remember.checked === true){
+                alert("기억하기 체크함");
+            }
 
         });
     </script>

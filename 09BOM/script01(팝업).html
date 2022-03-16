@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" id="popup">새창열기</button>
+    <script>
+        popup = document.getElementById("popup");
+        popup.onclick = function(){
+
+            //window.open(문서주소, 이름, 옵션);  
+            //window.close(); 
+
+            //window.open("http://www.naver.com", "팝업창"); // 옵션이 없으면 옆으로 새로운 창이 만들어짐
+            //window.open("http://www.naver.com", "팝업창", "width=300, height=300, left=100, top=100"); // 옵션 주면 창 분리됨
+            window.open("../04publishing/sidebar.html", "팝업창 예시");
+        }
+    </script>
+</body>
+</html>

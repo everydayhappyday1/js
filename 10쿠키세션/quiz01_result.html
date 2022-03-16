@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>최신 클릭 목록</h3>
+    <div class="cartList">
+
+    </div>
+    <script>
+        // 1. 로컬스토리지 값을 가지고 온다.
+        // 2. 가지고 온 값을 이미지로 생성해서 cartList에 appendChild로 추가
+        var cartList = document.querySelector(".cartList");
+
+        window.onload = function(){
+            var arr = JSON.parse(localStorage.getItem("like")); // like가 문자열이니까 json.parse로 치환시켜서 가져와야 함.
+            console.log(arr);
+            //값이 존재하는 경우
+            if(arr != null){
+
+                for(var i=0; i<arr.length; i++){
+                    var img = document.createElement("img");
+                    img.src = arr[i];
+                    img.style.width="300px";
+                    cartList.appendChild(div);
+                }
+
+            }else{  
+                var div = document.createElement("div");
+                div.innerHTML = "최근 확인 목록이 없습니다.";
+                cartList.appendChild(div);
+            }
+        }
+    </script>
+</body>
+</html>

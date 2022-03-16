@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- class 속성에서 띄어쓰기: 다른 클래스 정의하는 것 . 따라서 지금은 클래스가 2개이다. btn과 btn-default -->
+    <button type="button" class="btn btn-default" id="btn">클래스 속성 제어하기</button>
+    <script>
+        var btn = document.getElementById("btn");
+        // 속성 접근하기
+        //console.log(btn.type);
+        //console.log(btn.id);
+
+
+        // 클래스 속성은 어떻게 접근???
+        // console.log(btn.class); //undefined 뜬다. 왜 ???
+        console.dir(btn);
+        console.log(btn.className); // 방법1 : 클래스는 className으로 접근한다.
+        console.log(btn.classList); // 방법2 : 배열형태로 이름을 가져온다.
+
+
+        // 클래스네임 바꾸기 콘솔에서 확인
+        //btn.className="xxxx"; 
+
+        // 기존 클래스 이름을 빼거나 더해주는 방법
+        //console.log(btn.classList.add('lll'));
+        //console.log(btn.classList.contains('ccc'));
+        //console.log(btn.classList.remove('lll'));
+        btn.classList.add("xxx"); // 추가
+        btn.classList.remove("btn"); // 삭제
+        console.log(btn.classList.contains("btn")); // contains = 있으면 true 없으면 false
+        btn.classList.toggle("aaaa"); // 토글: 없으면 추가, 있으면 자동으로 제거 
+        btn.classList.toggle("aaaa"); // 두번써서 aaa 삭제됨
+
+    </script>
+</body>
+</html>

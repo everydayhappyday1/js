@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- document.getElementsByName(""); -->
+    <!--체크박스: 다중선택-->
+    <button id="btn1">체크박스 요소 확인</button>
+    <input type="checkbox" name="inter" value="1"> JAVA
+    <input type="checkbox" name="inter" value="2"> JSP
+    <input type="checkbox" name="inter" value="3"> DB
+    <input type="checkbox" name="inter" value="4"> JSX
+    <input type="checkbox" name="inter" value="5"> JS
+    <script>
+        var btn1 = document.getElementById("btn1");
+        btn1.onclick = function(){
+            //name 속성이 inter인 것을 선택
+            var inter = document.getElementsByName("inter");
+            //console.log(inter); // 버튼을 클릭하면 배열을 가져온다. 
+            for(var i=0; i<inter.length; i++){
+                console.log(inter[i]);
+                console.log(inter[i].value);
+                console.log(inter[i].checked); //체크 여부 확인 (true, false)
+            }
+        }
+    </script>
+
+
+
+    <!--  document.getElementsByClassName("");  -->
+    <!--라디오 버튼: 단일선택-->
+    <button id="btn2">라디오 버튼 확인</button> 
+    <input type="radio" name="major" class="nice" value="1">프로그램
+    <input type="radio" name="major" class="nice" value="2">디자인
+    <input type="radio" name="major" class="nice" value="3">네트워크
+    <input type="radio" name="major" class="nice" value="4">운영체제
+
+    <script>
+        var btn2 = document.getElementById("btn2");
+        btn2.onclick = function (){
+            //class속성이 nice인 것을 선택
+            var nice = document.getElementsByClassName("nice");
+            console.log(nice);
+            
+            for(var j=0; j<nice.length; j++){
+                console.log(nice[j]);
+                console.log(nice[j].value);
+                console.log(nice[j].checked); //체크 여부 확인 (true, false)
+            }
+        }
+    </script>
+
+
+
+
+
+
+    <hr>
+    <!--  document.getElementsByTagName("");  -->
+    <button id="btn3">태그로 선택하기</button>
+    <select id="select1">
+        <option>010</option>
+        <option>032</option>
+        <option>02</option>
+        <option>062</option>
+        <option>051</option>
+    </select>
+    <script>
+        var btn3 = document.getElementById("btn3");
+        btn3.onclick = function (){
+            // 이렇게 해도 된다. 그러나, 셀렉트가 여러개라면 다 가져와서 문제된다. 
+            //var option = document.getElementsByTagName("option"); // 선택할 태그를 문자열로
+            //console.log(option);
+
+            //특정 태그를 가져와서
+            var select1 = document.getElementById("select1");
+            //태그의 속성을 가져와 변수에 저장
+            var option = select1.getElementsByTagName("option");
+            
+            for(var i=0; i<option.length; i++){
+                console.log(option[i]);
+                console.log(option[i].value);
+                console.log(option[i].selected);
+
+            }
+        }
+    </script>
+
+
+</body>
+</html>

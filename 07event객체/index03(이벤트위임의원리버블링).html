@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .func1 {width: 300px; height: 300px; background-color: red;}
+        .func2 {width: 200px; height: 200px; background-color: blue;}
+        .func3 {width: 100px; height: 100px; background-color: yellow;}
+    </style>
+</head>
+<body>
+    <!-- DOM 이벤트의 동작방식: 버블링  -->
+    <!-- 버블링은 자식 -> 부모 이벤트를 치고 올라가는 특성이 있다. -->
+    <!-- 동작순서 : 3 2 1  -->
+    <h3>버블링 vs 캡쳐링</h3>
+    <div class="func1">
+        <div class="func2" >
+            <div class="func3">func3(자식)</div><!-- 동작순서 : 3(자식부터) 2 1(부모로)  -->
+        </div>
+    </div>
+    <script>
+        //이벤트를 부모에 걸면 자식 모두가 동작한다.
+        //자식을 클릭해도 이벤트가 동작하는 이유: 버블링 페이즈를 실행시키기 때문
+        //자식을 클릭해도 이벤트가 동작하는 이유: 버블링 페이즈를 실행시키기 때문
+        //자식을 클릭해도 이벤트가 동작하는 이유: 버블링 페이즈를 실행시키기 때문
+        //자식을 클릭해도 이벤트가 동작하는 이유: 버블링 페이즈를 실행시키기 때문
+        //자식을 클릭해도 이벤트가 동작하는 이유: 버블링 페이즈를 실행시키기 때문
+        var func1 = document.querySelector(".func1");
+        func1.onclick = function(){
+            alert("func1번"); // 클릭하면 다 경고창 뜬다 : 캡쳐링: 내려왔다가 올라가면서 이벤트 치고 올라감.
+                              // 근데 두번 동작하면 안되니까, 기본적으로 버블링 페이지를 실행시키도록 한다. 
+                              // func3까지 왔다가 올라가는 것이기 때문에 모두 경고창이 뜬다. 
+        }
+        var func2 = document.querySelector(".func2");
+        func2.onclick = function(){
+            alert("func2번");
+            event.stopPropagation();// 버블링 이벤트 중단
+        }
+        var func3 = document.querySelector(".func3");
+        func3.onclick = function(){
+            alert("func3번"); // 버블링 타고 올라가면서 3, 2 ,1을 차례대로 실행시킴 
+        }
+    </script>
+</body>
+</html>

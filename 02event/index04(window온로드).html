@@ -17,12 +17,15 @@
     <!-- window는 자바스크립트의 최상위 객체이다. -->
 
     <!-- onload - 페이지가 로드 끝난 후에 실행하라는 뜻
-    단, onload 이벤트는 페이지마다 1개만 사용할 수 있다. -->
+    단, onload 이벤트는 페이지마다 1개만 사용할 수 있다 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 여러개 쓰면 맨 마지막것만 사용됨-->
 
     <script>
         window.onload = function(){
             var btn = document.getElementById("btn");
-            console.log(btn);
+            // console.log(btn);
+            btn.onclick =function(){
+                console.log("온로드는 최상위객체");
+            }
         }
     </script>
 

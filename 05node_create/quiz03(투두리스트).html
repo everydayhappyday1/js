@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    
+    <h3>할일 목록 만들어보기</h3>
+
+    <form class="nameForm">
+        <h3 class="nameTitle"></h3>
+        <input type="text" placeholder="이름을 입력하세요">
+        <button type="button">확인</button>
+    </form>
+
+
+
+    <form class="todoForm">
+        <input type="text" placeholder="할일을 작성하세요">
+        <button type="button">확인</button>
+    </form>
+
+    <ul class="todoList">
+
+    </ul>
+
+    <script>
+        var nameForm = document.querySelector(".nameForm");
+        var nameTitle = nameForm.querySelector(".nameTitle");
+        var input = nameForm.querySelector("input");
+        var button = nameForm.querySelector("button");
+        button.addEventListener("click", regist);
+
+        function regist() {
+            nameTitle.innerHTML = input.value + "님 안녕하세요";
+            input.style.display = "none";
+            button.style.display = "none";
+        }
+
+        //할일 목록 만들기
+        var todoList = document.querySelector(".todoList"); //ul
+        var todoForm = document.querySelector(".todoForm"); //form
+        var todoInput = todoForm.querySelector("input"); //form -> input
+        var todoButton = todoForm.querySelector("button"); //form -> button
+        todoButton.addEventListener("click", handleTodo);
+        
+        function handleTodo() {
+            var text = todoInput.value; //값
+            todoInput.value = "";
+
+            //btn생성
+            var btn = document.createElement("button");
+            btn.innerHTML = "X";
+            btn.addEventListener("click", deleteTodo); // 이거 클릭하면 삭제되도록 
+
+            var btnUp = document.createElement("button");            
+            btnUp.innerHTML = "위로이동";
+            btnUp.addEventListener("click", btnUpTodo);
+
+            var btnDown = document.createElement("button");
+            btnDown.innerHTML = "아래로이동";
+            btnDown.addEventListener("click", btnDownTodo); 
+
+            //li생성
+            var li = document.createElement("li");
+            li.innerHTML = text; //typeof(text);
+            li.appendChild(btn); //li자식으로 btn을 마지막에 하나추가 --> 추가해야 화면에 보임
+            li.appendChild(btnUp);
+            li.appendChild(btnDown);
+
+            //ul의 자식으로 추가
+            todoList.appendChild(li);
+
+        }
+        function deleteTodo(){
+            // console.log(1); x 버튼을 클릭해서 1이 나오면 작동하는 것 
+            // console.dir(this);
+            // console.log(this.parentElement);
+            this.parentElement.remove();
+        }
+        function btnUpTodo(){
+            var current = this.parentElement;
+            var prev = current.previousElementSibling;
+            //console.log(current, prev);
+            if(prev == null){
+                alert('첫번째 리스트 입니다. ');
+                return;
+            }
+            if(confirm('이동하시겠습니까?')){
+                todoList.insertBefore(current,prev)
+            }
+            
+        }
+        function btnDownTodo(){
+            var current = this.parentElement;
+            var next = current.nextElementSibling;
+            //console.log(current, next);
+            if(next==null){
+                alert('마지막 행입니다.');
+                return;
+            }
+            todoList.insertBefore(next,current)
+        }
+    </script>
+
+
+
+
+
+
+</body>
+</html>

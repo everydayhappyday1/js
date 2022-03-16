@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>토글버튼: 클래스를 이용해서 하나의 버튼에 여러 기능을 붙여주는 형태</h3>
+    <button class="toggle" id="toggle">토글버튼</button>
+    <script>
+        var toggle=document.getElementById("toggle");
+        toggle.onclick = function(){
+            if(toggle.className == "toggle"){ //toggle.className --> 버튼의 클래스 속성을 얻어옴.
+                toggle.innerHTML = "변경!";
+                toggle.className = "change"; // 클래스 이름 변경 --> 개발자도구 elements에서 확인 가능
+            }else{
+                toggle.innerHTML = "토글버튼";
+                toggle.className = "toggle";
+            }
+        }
+    </script>
+    <hr>
+    <h3>기존의 클래스 이름은 유지하고 토글 클래스만 따로 추가하는 형태</h3>
+    <button type="button" class="btn btnX aaa" id="toggle2">토글버튼</button>
+    <script>
+        var toggle2 = document.getElementById("toggle2");
+        toggle2.onclick = function(){
+            // 토글 클래스 이름 aaa 있는지 확인하기
+            if(toggle2.classList.contains("aaa")){ // 포함되어있다면 트루, 
+                toggle2.innerHTML = "변경";
+                toggle2.classList.remove("aaa"); // aaa클래스 삭제
+            }else{
+                toggle2.innerHTML = "토글버튼";
+                toggle2.classList.add("aaa"); // aaa클래스 추가
+            }
+        }
+    </script>
+</body>
+</html>

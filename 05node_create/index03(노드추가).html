@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>한번에 여러 태그 생성하기</h3>
+    <div>
+        <ul class="list">
+            <li><a> 문자열 </a></li>
+            <li><a> 문자열 </a></li>
+        </ul>
+    </div>
+    <button type="button" id="btn">5개 추가하기</button>
+    <script>
+        var ul = document.querySelector(".list");
+        var btn = document.getElementById("btn");
+        btn.onclick = function (){
+            //5개씩 생성하기
+            for(var i=0; i<=5; i++){
+                var li = document.createElement("li");
+                var a = document.createElement("a");
+                a.innerHTML = "문자열";
+                //ul 자식으로 추가한다. 
+                li.appendChild(a);
+                ul.appendChild(li);        
+            }
+        }
+    </script>
+</body>
+</html>

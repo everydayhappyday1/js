@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 쿠키 JS : 반드시 연결 필요 -->
+    <script src="popup.js"></script>
+</head>
+<body>
+    <script>
+        //createCookie("xxx"); // 만들고
+        //var result = getCookie("xxx"); // 반환받고
+        //console.log(result); // 있다면 쿠키를 만들지않는다.
+
+        /*
+         1. window.onload를 이용해서 쿠키 존재여부를 확인하고 
+            쿠기가 없다면 window.open(값,값,값)으로 팝업창을 올린다.
+         2. 팝업창은 popup.html
+        */
+
+        // 제일 마지막에 실행되는 온로드 
+        window.onload = function(){
+            var bool = getCookie("mainPopup"); // 쿠키이름 있으면 true
+            if(!bool){ // 이름이 없다면 팝업창을 연다.
+                window.open("popup.html","메인팝업1","width=300, height=300, left=100, top=100;");//문서주소, 아무이름, 옵션
+            }
+        }
+        
+
+    
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="busData">
+        <div class="inner">
+            <h3></h3>
+            <h3></h3>
+            <h3></h3>
+        </div>
+    </div>
+    <button type="button" class="next">다음데이터가져옹기</button>
+    <script>
+        //https://data.seoul.go.kr/dataList/OA-20883/S/1/datasetView.do
+        //596a75694b736f6536316b6f61416e
+        //http://openapi.seoul.go.kr:8088/(인증키)/xml/TbPublicWifiInfo/1/5/
+
+        function getAjax(page){
+            var end = page*10; // 1*10;
+            var start = end-9  // 
+
+            console.log(start,end);
+
+
+
+            fetch("http://openapi.seoul.go.kr:8088/596a75694b736f6536316b6f61416e/json/TbPublicWifiInfo/"+start+"/"+end)
+                .then(function(response){
+                    //console.log(response);
+                    if(response.status != 200){
+                        alert("요청에 실패했습니다.");
+                    }else{
+                        return response.json();
+                    }
+                }).then(function(data){
+                    console.log(data);
+            })
+        }
+
+        var pageNum = 1; // 페이지번호
+        var next = document.querySelector(".next");
+        next.onclick = function(){
+            getAjax(pageNum);
+            pageNum++; // 페이지번호 증가 
+        }
+    </script>
+</body>
+</html>

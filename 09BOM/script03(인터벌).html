@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {padding: 0; margin: 0;}
+
+        /* 애니메이션 만들기 : keyframes*/
+        @keyframes fadeIn{
+            from{
+                opacity: 0;
+
+            }to{
+                opacity: 1;
+            }
+        }
+        .bgImg {animation: fadeIn .5s ease-in-out;}
+    </style>
+</head>
+<body>
+    <article class="slide">
+        <img src="img/1.jpg" class="bgImg">
+    </article>
+    <script>
+        var num = 1;
+        function changeImg(){
+            var img = document.createElement("img") // 이미지 태그를 만든다.
+            
+            // 1. 이미지태그 생성
+            // img에 src 속성을 추가한다.
+            // 태그에 클래스 추가한다.
+            // 하나씩 증가하는 변수를 밖에 만든다. ++num (먼저 1을 증가시킨다.)
+
+            img.src = "img/"+ (++num) +".jpg"
+            img.classList.add("bgImg");
+            
+
+            // 2. slide의 자식 삭제 : 자식을 삭제로 이미지 태그 삭제하고 변하는 이미지 넣기
+            var slide = document.querySelector(".slide"); 
+            slide.firstElementChild.remove();
+
+
+            //3. slide에 자식 추가
+            slide.appendChild(img);
+
+            
+            // 4. 1로 초기화
+            if(num === 3) num = 0; // num이 3이면 0으로 초기화해서 반복하도록
+            console.log(num);
+        }
+
+
+        // 즉시실행함수 : 함수를 중괄호로 묶는다 그리고 ()실행을 준다.
+        (function(){
+            setInterval(changeImg, 2000); // 2초마다 인터벌
+        })();
+    </script>
+</body>
+</html>

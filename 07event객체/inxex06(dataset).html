@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- dataset: 태그에 data-이름 으로 선언하과 데이터를 저장하는 곳. 이름음 자유 -->
+    <!-- 반드시 문자열의 형태여야 한다. -->
+    <ul class="list">
+        <li><a href="#" data-userInfo='{"id" : "1", "age" : "20"}'>홍길동</a></li> <!--"키":"값" stringify 찾아서 검색하기 JSON-->
+        <li><a href="#" data-userInfo='{"id" : "2", "age" : "30"}'>이순신</a></li>
+        <li><a href="#" data-userInfo='{"id" : "3", "age" : "40"}'>바둑이</a></li>
+        <li><a href="#" data-userInfo='{"id" : "4", "age" : "50"}'>해피독</a></li>
+    </ul>
+    <script>
+        var list = document.querySelector(".list");
+        list.onclick = function(){
+            event.preventDefault (); // a태그의 고유 이벤트 중단.
+            if(event.target.tagName != "A") return; // A가 아니라면 종료
+            console.dir(event.target); //A
+            // dataset 이름으로 값을 찾을 수 있고, -이름이 사용할 수 있는 이름이 된다.
+            console.log(event.target.dataset.userinfo);
+
+
+            var data = event.target.dataset.userinfo;
+            var obj = JSON.parse(data); // JSON 형태로 변환
+            console.log(obj); // 중요중요 이제 id와 age 값을 얻어 쓸 수 있다.
+        }
+
+    </script>
+</body>
+</html>

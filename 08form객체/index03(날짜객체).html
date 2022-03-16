@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1646372015142
+        // 선생님꺼 필요 
+
+        /*
+        var date = new Date();
+        //console.dir(date);
+        console.log(date);
+        console.log(date.getTime()); // 밀리초
+        console.log(date.getFullYear()); // 년도
+        console.log(date.getMonth()+1); // 월 +1 
+        console.log(date.getDate()); // 일
+        console.log(date.getHours()); // 시간
+        console.log(date.getMinutes()); // 분
+        console.log(date.getSeconds()); // 초
+        */
+
+        //var date = new Date(1646372015142); // 밀리세컨의 기준시분초
+        //console.log(date);
+
+        //var date = new Date("2022-03-04");  // 3월 3일의 기준시
+        //console.log(date);
+
+       // var date = new Date(2022, 03-1, 04, 08, 23, 33);  // 년 월 일 시 분 초
+       // console.log(date);
+
+        var date = new Date(2022, 02, 04, 08, 23, 33);
+        var today = new Date();
+        console.log(date); // 비교할 기준시
+        console.log(today); // 현재시간
+
+        console.log("기준시의 밀리초", date.getTime());
+        console.log("현재시의 밀리초", today.getTime());
+
+        var gap = today.getTime() - date.getTime();
+        console.log(gap);
+
+        // 1000 * 60 * 60  = 1시간
+        // 5 * 1000 * 60 * 60 / 1000 * 60 * 60 = 5시간?????
+        var time;
+        if(gap < 1000 * 60 * 60 * 24){ // 1일 이하 // 분을 밀리초로 나타낼 때 (1000*60)
+            if(gap < 1000 * 60 * 60){ // 1시간
+                time = "방금 전";
+            }else{ // 1시간보다 큰 경우
+                time = parseInt(gap/(1000*60*60)); + "시간 전";
+            }
+        }else{ // 1일 이상
+            var year = date.getFullYear();
+            var month = date.getMonth()+1;
+            var day = date.getDate();
+            var hour = date.getHours();
+            var minute = date.getMinutes();
+            var second = date.getSeconds();
+            time = yeart+"년"+ month+"월" + day+"일" +(hour < 10 ? "0"+hour : hour )+ hour+":" + minute+":" + second+":";4
+            
+        }
+
+        console.log(time);
+
+
+
+    </script>
+</body>
+</html>

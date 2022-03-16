@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    localStorage를 이용하여 마지막으로 클릭한 2개의 정보를 불러오기
+    <div class="list">
+        <img src="img/1.jpg" width="300">
+        <img src="img/2.jpg" width="300">
+        <img src="img/3.jpg" width="300">
+        <img src="img/4.jpg" width="300">
+    </div>
+    <script>
+        //배열을 이용해서 처리한다.
+        //push(), shift()를 이용 
+        //앞에꺼 계속 꺼내고 뒤에서는 계속 넣는다.
+
+
+        // 1. 이벤트는 list에 클릭이벤트를 걸고 위임으로 처리한다.
+        // 2. 로컬스토리지에 값이 있다면 가지고 와서 배열에 저장한다.
+        // 3. 클릭한 이미지의 정보를 배열에 추가
+        //    배열 길이가 2보다 크면, shift로 제거해야 함.
+        // 4. 로컬스토리지에 동일한 이름으로 저장
+        var list = document.querySelector(".list");
+        list.onclick = function() {
+            //console.log( event.target );
+            if(event.target.tagName != "IMG") return;
+            //함수호출            
+            setStorage(event.target);
+        }
+        
+        var arr = new Array(); //빈 배열
+        function setStorage(img) {
+
+            if(localStorage.getItem("like") != null) {
+                arr = JSON.parse(localStorage.getItem("like") ); //배열로 형변환
+            }
+            //길이가 2이상이면 앞에서 제거
+            if(arr.length >= 2) {
+                arr.shift();
+            }
+
+            arr.push(img.src ); //이미지 src값을 배열에 추가합니다
+
+            localStorage.setItem("like", JSON.stringify(arr) );
+        }
+
+
+    </script>
+</body>
+</html>

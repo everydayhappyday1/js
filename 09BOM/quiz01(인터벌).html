@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 이미지를 숨겨놨다가 보여주고 보여주고 보여주는 형식으로 */
+        /* 인터벌에서 디스플레이를 변경 */
+        .main-banner {text-align: center;}
+        .main-banner img {display: none; position: relative; animation: topIn .5s linear;}
+        @keyframes topIn{
+            from{
+                opacity:0;
+                top:-50px;
+            }to{
+                opacity:1;
+                top:0px;
+            }    
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="main-banner" class="bgImg">
+        <img src="img2/1.jpg" width="300px">
+        <img src="img2/2.jpg" width="300px">
+        <img src="img2/3.jpg" width="300px">
+        <img src="img2/4.jpg" width="300px">
+    </div>
+    <script>
+        var index = 0;
+        var stop;
+        function changeBanner (){
+            
+            //메인베너의 자식에 접근
+            var banner = document.querySelector(".main-banner"); 
+            console.dir(banner);
+            console.log(banner.children[0]);
+            console.log(banner.children[1]);
+            console.log(banner.children[2]);
+
+            banner.children[index].style.display="inline";
+            index++;
+
+            //인터벌 중단
+            if(index === banner.children.length) clearInterval(stop);
+        }
+
+        // 즉시실행함수 : 함수를 중괄호로 묶는다 그리고 ()실행을 준다.
+        (function(){
+            stop = setInterval(changeBanner, 500); // 0.5초
+        })();
+    </script>
+</body>
+</html>

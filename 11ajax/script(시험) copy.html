@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="bus">
+        <div class="inner">
+            <h3 class="run_dt">운행일</h3>
+            <h3 class="route_name">버스번호</h3>
+            <h3 class="run_distance">운행거리</h3>
+        </div>
+    </div>
+    <button type="button" class="next">버스확인</button>
+    <script>
+        function getAjax(page){
+            var end = page*10;
+            var start = end-9;
+            //6a466c764a736f653837736f665a69
+            fetch("http://openapi.seoul.go.kr:8088/6a466c764a736f653837736f665a69/json/TbBusRunDistance/1/20/")
+            .then(function(response){
+                    if(response.status != 200){
+                        alert("요청 실패.");
+                    }else{
+                        return response.json();
+                    }
+                }).then(function(jsonData){
+                    
+                    //console.log("jsonData="+jsonData.TbBusRunDistance.row.RUN_DT);
+                    
+                     var str = "";
+                     for (var i = 0; i < jsonData.TbBusRunDistance.row.length; i++){
+                         console.log(jsonData.TbBusRunDistance.row[i].RUN_DT);                 
+                         console.log(jsonData.TbBusRunDistance.row[i].ROUTE_NAME);                 
+                     }
+            })
+        }
+
+        var pageNum = 1; 
+        var next = document.querySelector(".next");
+        next.onclick = function(){
+            getAjax(pageNum);
+            pageNum++; 
+        }
+    </script>
+</body>
+</html>

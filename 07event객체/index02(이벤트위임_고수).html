@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>동일한 형태의 태그에 이벤트를 걸어서 즉시 처리하려면??</h3>
+    <ul class="parent">
+        <li>1. 홍길동</li>
+        <li>2. 이순신</li>
+        <li>3. 바둑이</li>
+        <li>4. 나과자</li>
+        <li>5. 호호호</li>
+    </ul>
+    선택된 태그의 값
+    <p class="result">
+
+    </p>
+    <script>
+        // 이벤트 위임: 부모에 건 이벤트가 자식으로 위임되는 특성
+        var parent = document.querySelector(".parent");
+        var result = document.querySelector(".result");
+        parent.onclick = function(){
+            //그런데 화면 좌측의 ul을 클릭하면 5개가 모두 나온다.
+            // 정확히 이벤트가 li에서만 동작하도록 만들어야 한다. 
+            //console.dir(event.target);
+            //console.dir(event.target.tagName); // li클릭, 좌측공백ul 클릭할때 콘솔에서 태그 확인, li일때만 태그 통과되도록
+            if(event.target.tagName != "LI") return; 
+
+            //console.log(event.target); // 이벤트가 적용된 대상을 가져옴 
+            //console.log(event.currentTarget); // 실제 이벤트가 걸린 태그를 가져옴. 우리는 부모에 걸어서 부모를 가져온다.
+            result.innerHTML = event.target.innerHTML;
+            
+        }
+    </script>
+</body>
+</html>

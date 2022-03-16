@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .movieList{
+            overflow: hidden; /*.movie의 부모라서*/
+            width: 80%;
+            margin: 0 auto;
+        }
+        .movieList > .movie {
+            float: left; /*부모한테 overflow: hidden;*/
+            width: 33.3333%;
+            box-sizing: border-box;
+            height: 300px;
+            position: relative; /*부모라서*/
+            margin-bottom: 100px;
+        }
+        .movieList > .movie > img{
+            position: absolute; /*부모에 relative*/
+            left: 0;
+            top: 0;
+            width: 150px;
+
+        }
+        .movieList > .movie > .inner{
+            padding-left: 150px;
+        }
+        .movieList > .movie > .inner > .genres > li{
+            display: inline-block;
+        }
+        .movieList > .movie > .inner > .summary{
+            overflow: scroll;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="movieList">
+        <!-- <div class="movie">
+            <img src="#">
+            <div class="inner">
+                <h3 class="title">제목</h3>
+                <h3 class="year">년도</h3>
+                <ul class="genres">
+                    <li>장르1</li>
+                    <li>장르2</li>
+                    <li>장르3</li>
+                </ul>
+            </div>
+        </div> -->
+    </div>
+    <script>
+        // 연습사이트
+        // https://yts.mx/api
+        // 요청주소: https://yts.mx/api/v2/list_movies.json 
+
+        fetch("https://yts.mx/api/v2/list_movies.json?limit=10&sort_by=rating").then(function(response){
+            //console.log(response);
+            if(response.status != "200"){ 
+                alert("서버통신에 실패했습니다.");
+            }else{
+                //response.json().then(function(data){
+                  //console.log(data); 
+                  return response.json(); // 리턴 - 프로미스 (다음 then 구문으로 결과를 넘긴다)
+                }
+            }).then(function(jsonData){
+                var data = jsonData.data.movies; // jsonData["data"]["movies"]
+                //console.log(data);
+                
+                var str = ""; // 문자를 누적시킬 변수
+                for (var i = 0; i < data.length; i++){
+                    console.log(data[i]);
+                    var img = data[i].medium_cover_image;
+                    var title = data[i].title;
+                    var year = data[i].year;
+                    var summary = data[i].summary;
+                    var genres = data[i].genres;
+                    // console.log(img);
+                    // console.log(title);
+                    // console.log(year);
+                    // console.log(summary);
+                    // console.log(genres); 얘는 또 배열이네
+
+                        str += '<div class="movie">';
+                            str += '<img src="'+img+'">';
+                            str += '<div class="inner">';
+                                str += '<h3 class="title">'+title+'</h3>';
+                                str += '<h3 class="year">'+year+'</h3>';
+                                str += '<ul class="genres">';
+                                for(var j=0; j<genres.length; j++){
+                                    str += '<li>-'+genres[j]+'</li>';
+                                }
+                                str += '</ul>';
+                                str += '<p class="summary">'+summary+'</p>';
+                            str += '</div>';
+                        str += '</div>';
+                }// end for 
+                document.querySelector(".movieList").innerHTML = str ;
+                console.log(str);
+            })
+    </script>
+</body>
+</html>

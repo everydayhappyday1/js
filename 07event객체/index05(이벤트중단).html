@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul,li {list-style: none;}
+        .pageNation > li {display: inline;}
+        .pageNation > li > a {display: inline-block; 
+                              padding: 5px; 
+                              border: 1px solid #777;
+                              text-decoration: none;}
+    </style>
+</head>
+<body>
+    <div>
+        <ul class="pageNation">
+            <li><a href="getList.board">1</a></li>
+            <li><a href="getList.board">2</a></li>
+            <li><a href="getList.board">3</a></li>
+            <li><a href="getList.board">4</a></li>
+            <li><a href="getList.board">5</a></li>
+        </ul>
+    </div>
+    <script>
+        var pageNation = document.querySelector(".pageNation");
+        pageNation.onclick = function(){
+            // 누르는 애가 event.target --> 여기서는 a태그이다
+            event.preventDefault(); // a가 가진 고유 이벤트를 중단시킨다. !!!!!!!!!1
+            if(event.target.tagName != "A") return; // a태그 아니면 종료
+            
+            console.log(1); // atag 타고 넘어가서 얘가 안찍힌다. 이미 찍히고 넘어오는데 화면이 너무 빨라... preventDefault를 써줘야 한다. (위에 씀)
+            var num = event.target.innerHTML;
+            console.log(num);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>이벤트 위임과 여러 클래스</h3>
+    <!-- 
+        버튼끼리 이벤트를 처리한다면?
+        1. 인라인 방식
+        2. 위임방식으로 이벤트를 걸고, 클래스 속성으로 제어
+        
+        클래스가 1개면 className으로 접근
+        클래스가 여러개면 classList로 접근
+     -->
+    <section>
+        <div class="list">
+            <div>
+                <span>홍길동</span>
+                <button type="button" class="btn sel">선택</button>
+                <button type="button" class="btn del">삭제</button>
+            </div>
+            <div>
+                <span>이순신</span>
+                <button type="button" class="btn sel">선택</button>
+                <button type="button" class="btn del">삭제</button>
+            </div>
+            <div>
+                <span>바둑이</span>
+                <button type="button" class="btn sel">선택</button>
+                <button type="button" class="btn del">삭제</button>
+            </div>
+            <div>
+                <span>세종시</span>
+                <button type="button" class="btn sel">선택</button>
+                <button type="button" class="btn del">삭제</button>
+            </div>
+        </div>
+    </section>
+    <script>
+        var list = document.querySelector(".list");
+        list.onclick = function(){
+            //선택버튼은 선택버튼끼리, 삭제버튼은 삭제버튼끼리
+            //console.log(event.target);
+            //console.log(event.target.className); // 단일 클래스 
+            //console.log(event.target.classList); // 여러 클래스
+            //console.log(event.target.classList.contains("sel")); //포함되어있다면 true 나온다.
+
+            if(event.target.classList.contains("sel")){
+                event.target.previousElementSibling.style.color = "red";
+            }else if(event.target.classList.contains("del")){
+                event.target.parentElement.remove();
+            }
+        }
+    </script>
+</body>
+</html>

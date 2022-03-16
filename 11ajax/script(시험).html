@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button type="button" class="next">버스확인</button>
+    <script>
+        function getAjax(page){
+            var end = page*10;
+            var start = end-9;
+            //6a466c764a736f653837736f665a69
+            fetch("http://openapi.seoul.go.kr:8088/6a466c764a736f653837736f665a69/json/TbBusRunDistance/1/20/"+start+"/"+end)
+            .then(function(response){
+                    if(response.status != 200){
+                        alert("요청 실패.");
+                    }else{
+                        return response.json();
+                    }
+                }).then(function(data){
+                    console.log(data);
+            })
+        }
+
+        var pageNum = 1; 
+        var next = document.querySelector(".next");
+        next.onclick = function(){
+            console.log(1);
+            getAjax(pageNum);
+            pageNum++; 
+        }
+    </script>
+</body>
+</html>

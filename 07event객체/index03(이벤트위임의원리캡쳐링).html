@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .func1 {width: 300px; height: 300px; background-color: red;}
+        .func2 {width: 200px; height: 200px; background-color: blue;}
+        .func3 {width: 100px; height: 100px; background-color: yellow;}
+    </style>
+</head>
+<body>
+    <h3>버블링 vs 캡쳐링</h3>
+    <div class="func1">
+        <div class="func2" >
+            <div class="func3">func3(자식)</div>
+        </div>
+    </div>
+    <script>
+        // 이벤트 캡쳐링 -  부모에서 자식으로 이벤트를 치고 가는 특성이 있다. 
+        // 거의 사용 안한다. 
+        // 이벤트 실행순서: 1 -> 2-> 3
+        var func1 = document.querySelector(".func1");
+        var func2 = document.querySelector(".func2");
+        var func3 = document.querySelector(".func3");
+
+        func1.addEventListener("click", function(){
+            alert("func1");
+        }, true); // 이벤트를 걸긴 거는테 캡쳐링으로 걸겠다. 
+        func2.addEventListener("click", function(){
+            event.stopPropagation(); // 캡쳐링페이즈의 중단. 이거 쓰면 3번은 아예 실행이 안됨
+            alert("func2");
+        }, true);
+        func3.addEventListener("click", function(){
+            alert("func3"); // 누르면 1번부터 뜬다. 부모에서 자식으로 내려오면서 실행되기 때문
+        }, true);
+
+    </script>
+</body>
+</html>

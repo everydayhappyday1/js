@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>5초 뒤에 경고창 실행</h3>
+    <h3>이 버튼을 누르면 실행되니 않는다.</h3>
+    <button type="button" id="stopTimeout">타임아웃중지</button>
+    <script>
+        // var stop = setTimeout(function(){
+        //     alert("경고창");
+        // }, 5000);
+        // //중지버튼
+        // var stopTimeout = document.getElementById("stopTimeout");
+        // stopTimeout.onclick = function(){
+        //     clearTimeout(stop);
+        // }
+
+        // 진화한 문법
+        // test함수에는 매개변수를 줄 수 있나? --> 가능, 근데 5초 뒤가 아니라 바로 실행됨
+        // 그래서 리턴 뒤에 함수를 준다. 
+        function test(text){   
+            return function(){ // 여기 매개변수 자리에 text를 넣으면
+                alert("전달된 매개변수"+text); // 얘가 리텀함수의 text를 입력받는다. 그래서 리턴함수 매개변수는 쓰지 않는다.
+            }
+        }
+        setTimeout(test('xx'), 5000);
+    </script>
+</body>
+</html>

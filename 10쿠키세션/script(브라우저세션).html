@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+    localStorage와 sessionStorage : 브라우저에 저장하는 세션의 개념<br><br>
+    키=값 형태의 문자열로 저장한다.<br>
+    localStorage: 브라우저를 이동하거나 종료해도 계속 남아있다.  예) 즐겨찾기, 최근 확인한 상품 등등<br>
+    sessionStorage: 브라우저를 이동하거나 종료하면 사라진다.<br>
+    <hr>
+    쿠키와의 차이점<br>
+    - 쿠키는 서버간 전송이 가능하다.<br>
+    - 스토리지는 브라우저에서만 사용할 수 있다.<br>
+    </p>
+    <hr>
+    <button type="button" id="createSession">세션 생성</button>
+    <button type="button" id="removeSession">세션 제거</button>
+    <script>
+        // 값 저장하기: setItem("키","값");
+        // 값 얻어오기: getItem("키");
+        // 값 삭제하기: removeItem("키");
+        // 전부 삭제  : clear();
+        var createSession = document.getElementById("createSession");
+        createSession.onclick = function(){
+            var arr = ["텀","블","러"];
+            localStorage.setItem("aaa","홍길동"); // (키,값-->객체나 배열도 저장 가능)
+            localStorage.setItem("bbb","20");
+            localStorage.setItem("ccc",JSON.stringify(arr)); // 배열이 아닌 문자열로 형변환되어 나타난다. 
+                                                             // --> 나중에 문제됨 --> 배열이나 객체는 
+                                                             // --> 문자열 형태로 만들어서 저장해야 함. JSON.stringify()사용
+            var aaa = localStorage.getItem("aaa");
+            var bbb = localStorage.getItem("bbb");
+            var ccc = JSON.parse(localStorage.getItem("ccc")); // 값을 얻을 때 배열형으로 다시 형변환
+
+            console.log("-------1");
+            console.log(aaa);
+            console.log("-------2");
+            console.log(bbb);
+            console.log("-------3");
+            console.log(ccc);
+        }
+        var removeSession = document.getElementById("removeSession");
+        removeSession.onclick = function(){
+            localStorage.removeItem("aaa"); // 삭제
+            var aaa = localStorage.getItem("aaa");
+            console.log(aaa); // null
+        }
+    </script>
+</body>
+</html>

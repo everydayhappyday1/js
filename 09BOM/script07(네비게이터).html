@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 크로스브라우징: 브라우저별로 디자인 입히기
+        // 네비게이터 객체는 : 브라우저에 대한 정보를 제공한다. 
+        // console.dir(navigator);
+
+        //userAgent --> 브라우저 정보를 알 수 있다. 이거 사용해서 어떤 브라우저 쓰는지 알 수 있고, 부족한 부분을 채워줄 수 있다.
+        //geolocation.getCurrentPosition() --> 어디서 접근했는지 등....
+
+        var browser = navigator.userAgent.toLowerCase(); //toLowerCase: 정보를 소문자로 모두 바꾼다. 
+        //console.log(navigator.userAgent);
+        //console.log(browser);
+        console.log(browser);        
+        console.log(browser.indexOf("chrome")); // indexOf: 문자가 있다면 위치를 알려주고, 없다면 -1 반환
+                                      
+        if(browser.indexOf("chrome") != -1){ // 크롬브라우저가 아니라면 ~~~ 
+            //크롬디자인 작업: 헤드 자식으로 linked rel을 가져다 넣는다. (동적로드)
+            console.log("크롬");
+            //크롬디자인 동적로드 : 크롬으로 연다면 이 스타일 시트를 사용하시오...
+            var link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.href = "style.css";
+            document.head.appendChild(link);
+
+        }else if(browser.indexOf("firefox")!=-1){
+            //파이어폭스
+        }//.....
+        
+    </script>
+</body>
+</html>

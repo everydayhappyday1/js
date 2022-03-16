@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* https://michalsnik.github.io/aos/   참고사이트 꼭 가보기 분석 필요 */
+        /* @keyframes은 애니메이션 */
+        @keyframes fadeIn{
+            from{ /* from에서 시작 -> to로 */
+                opacity: 0;
+                margin-left: -100px; /*좌에서 */
+            }to{
+                opacity: 1;
+                margin-left: 0px; /*우로 이동 */
+            }
+        }
+        .toggle li {display: inline;}
+        .toggle li  a {
+            display: inline-block; 
+            padding: 10px; 
+            width:25%; 
+            text-align: center; 
+            border: 1px solid #777;
+        }
+        .toggle-menu {display: none;}
+        .toggle-menu.active {
+            display: block;
+            /*애니메이션 적용하려면 애니메이션 이름을 준다.*/
+            animation: fadeIn .5s ease-in-out;
+        } /*.active를 붙여쓴다. (기능이니까)*/
+    </style>
+</head>
+<body>
+    <section>
+        <ul class="toggle">
+            <li><a href="#" data-id="#toggle1">메뉴1</a></li>
+            <li><a href="#" data-id="#toggle2">메뉴2</a></li>
+            <li><a href="#" data-id="#toggle3">메뉴3</a></li>
+        </ul>
+        <div>
+            <div class="toggle-menu active" id="toggle1">메뉴1......</div> <!--스타일에서 .active 붙여씀. 영기서는 띄어쓴다.-->
+            <div class="toggle-menu" id="toggle2">허허허......</div> <!--id는 리스트의 아이디와 매칭이 되어야 함.-->
+            <div class="toggle-menu" id="toggle3">얍!!!......</div>
+        </div>
+    </section>
+    <script>
+        var toggle = document.querySelector(".toggle");
+        toggle.onclick = function(){
+            
+            event.preventDefault(); // A이벤트 중단
+            if(event.target.tagName !="A") return;
+            
+            // 1. toggle-menu가 가지고 있는 active를 일단 전부 제거한다. (반복문)
+            var toggles = document.querySelectorAll(".toggle-menu");
+            for(var i=0; i<toggles.length; i++){
+                console.log(toggles[i]);
+                toggles[i].classList.remove("active");
+            }
+            // 2. 클릭한 대상의 data-id값을 얻어오시오.
+            console.dir(event.target);
+            console.log('dataset = '+event.target.dataset);
+            var target = event.target.dataset.id;
+
+            // 3. 2번에서 얻은 id를 가지고 있는 태그에 add("active"); 하시오.
+            //var tag = document.querySelector(target);
+            //console.log(tag);
+            //tag.classList.add("active");
+            document.querySelector(target).classList.add("active");
+        }
+
+    </script>
+</body>
+</html>

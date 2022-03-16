@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .center {text-align: center;}
+        /* 내용물 중앙으로 보내기: 마진0오토 주고, 가로사이즈 준다 */
+        .content {
+            margin: 0 auto; 
+            width: 800px;
+
+            overflow: hidden;    
+        }
+        /* 이미지를 감싸는 박스에 이걸 줘서 꽉차게 만든다. */
+        .inner{
+            height: 300px;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+        .left{
+            float: left;
+            width: 50%; /*절반으로 자르기 위해서: 내용물 반반을 위한 것*/
+            box-sizing: border-box; /*박스가 상하가 되는데, 이것을 좌우로 해주기 위함*/
+        }
+        .content, .inner{
+            border: 1px solid #777;
+        }
+        .content, .left{
+            padding: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <article>
+        <div class="center">
+            <h3>style속성 활용하기</h3>
+            <button type="button" id="dark">어둡게</button>
+            <button type="button" id="bright">밝게</button>
+        </div>
+    </article>
+    <hr>
+    <section>
+        <div class="content"> <!--전체영역-->
+            <div class="left"> <!--숨김상자-->
+                <div class="inner">
+                    <img src="1.jpg" class="img">
+                </div>
+            </div>
+            <div class="left">
+                <div class="inner">
+                    <p>자바스크립트는 객체 기반의 스크립트 프로그래밍 언어이다. 이 언어는 웹 브라우저 내에서 주로 사용하며, 다른 응용 프로그램의 내장 객체에도 접근할 수 있는 기능을 가지고 있다. 또한 Node.js와 같은 런타임 환경과 같이 서버 프로그래밍에도 사용되고 있다</p>
+                    <a href="#">위키백과</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        var dark = document.getElementById("dark");
+        var bright = document.getElementById("bright");
+        
+        //var body = document.querySelector("body");
+        var body = document.body; //document 자식클래스로 body가 존재해서 이런 문법 가능 
+        var list = document.querySelectorAll("h3, a, p");
+
+        dark.onclick = function(){         
+            body.style.backgroundColor = "black";
+            //body.style.color = "white";
+            for(var i=0; i<list.length; i++){
+                list[i].style.color ="white";
+            }
+        }
+        bright.onclick = function(){
+            body.style.backgroundColor = "white";
+            //body.style.color = "black";
+            for(var i=0; i<list.length; i++){
+                list[i].style.color ="black";
+            }
+        }
+    </script>
+</body>
+</html>

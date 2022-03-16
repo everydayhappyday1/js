@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .kakaoBtn {
+            background-image: url(img/kakao_login_medium_narrow.png);
+            border: none;
+            width: 200px;
+            height: 50px;
+            background-repeat: no-repeat;
+            background-position: center;
+            cursor: pointer;
+            background-color: #FEE500;
+        }
+    </style>
+
+    <!-- kakao SDK 로드 -->
+    <script src="js/kakao.js"></script>
+</head>
+<body>
+    <form action="##" method="post" name="loginForm">
+        아이디: <input type="text" name="id"><br>
+        비밀번호: <input type="password" name="pw"><br>
+        <input type="submit" value="로그인">
+    </form>
+    <button type="button" onclick="kakaoLogin();" class="kakaoBtn"></button>
+    <button type="button" onclick="kakaoLogout();">카카오 로그아웃</button>
+
+
+    <script>
+        // 1. 카카오 sdk 시작
+        // 2. 플랫폼 만들기
+        // 3. 로그인 활성화 on
+        // 4. 동의항목 작성
+
+
+        // SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해 주세요.
+        Kakao.init('098be1014e1e48291d3e2ff77a2af309');  //098be1014e1e48291d3e2ff77a2af309
+
+        // SDK 초기화 여부를 판단합니다.
+        console.log(Kakao.isInitialized());
+
+        // 5. 카카오 로그인 버튼
+        function kakaoLogin(){
+            Kakao.Auth.login({
+                success: function(response) {
+                    //console.log(response);
+                    //console.log(response.access_token);
+
+                    // 6. 사용자 정보를 사용하기 위해 어세스 토큰을 저장 
+                    Kakao.Auth.setAccessToken(response.access_token);
+
+                    // 7. 유저 정보 요청
+                    getInfo();
+                    
+                },
+                fail: function(error) {
+                    console.log(error);
+                },
+            });
+        }
+
+
+
+
+        //유저 정보 가져오기 함수로 만들어두기 
+        function getInfo(){
+            Kakao.API.request({
+                url: '/v2/user/me',
+                success: function(response) {
+                    console.log(response);
+                    console.log(response.kakao_account.email); // 사용자 이메일 얻어오기
+                    console.log(response.kakao_account.profile.nickname); // 사용자 이메일 얻어오기
+
+                    // JS코드를 사용해서 응용
+                    // 우리 서버에 응용하기
+                    // 예시
+                    document.loginForm.id = response.kakao_account.email;
+                    //document.loginForm.submit();
+                },
+                fail: function(error) {
+                    console.log(error);
+            }
+        });
+        }
+
+
+
+        function kakaoLogout(){
+            if (!Kakao.Auth.getAccessToken()) {
+                console.log('Not logged in.');
+                return;
+            }
+            Kakao.Auth.logout(function() {
+                console.log(Kakao.Auth.getAccessToken());
+                //JS로 로그아웃 처리.... location.href로 다른데로 넘겨준다던가....
+            });
+        }
+
+
+    </script>
+</body>
+</html>

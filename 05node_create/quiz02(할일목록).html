@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <!-- appendChild  -->
+    <h3>할일 목록 만들어보기</h3>
+    <form class="nameForm">
+        <h3 class="nameTitle"></h3>
+        <input type="text" placeholder="이름을 입력하세요" class="inputName">
+        <button type="button" id="btn1"> 확인 </button>
+    </form>
+    <form class="todoForm">
+        <input type="text" placeholder="할 일을 입력하세요" class="inputTodo">
+        <button type="button" id="btn2"> 확인 </button>
+    </form>
+    
+    <ul class="todoList">
+         
+    </ul>
+    <script>
+        var nameForm = document.querySelector(".nameForm"); // 큰 덩어리 하나 들고오기 
+        //console.log(nameForm);
+        var nameTitle = nameForm.querySelector(".nameTitle");
+        var input = nameForm.querySelector("input"); //첫번째 인풋태그
+        var button = nameForm.querySelector("button");
+        //확인: console.log(nameTitle);  //console.log(input);  //console.log(button);
+
+        button.addEventListener("click",regist);
+        function regist(){
+            nameTitle.innerHTML = input.value+"님, 안녕하세요";
+            input.style.display = "none";
+            button.style.display = "none";
+        }
+
+
+        var todoList = document.querySelector(".todoList");  // ul
+        var todoForm = document.querySelector(".todoForm");  // form
+        var todoInput = todoForm.querySelector("input");     // form -> input
+        var todoButton = todoForm.querySelector("button");   // form -> button
+        
+        todoButton.addEventListener("click",handleTodo);
+        function handleTodo(){
+            var text = todoInput.value;
+            todoInput.value= ""; //공백으로 바꿔줘야 글쓴게 사라짐
+            //console.log(text);
+
+            //버튼생성
+            var btn = document.createElement("button");
+            btn.innerHTML = "X";
+
+            //li생성
+            var li = document.createElement("li");
+            li.innerHTML = text; // appendChild는 태그만 넣을 수 있다. text는 그냥 문자열이라 .innerHTML로 넣는다.
+            li.appendChild = btn;
+            //console.log(li);
+
+            //ul의 자식으로 추가
+            todoList.appendChild(li);
+
+        }
+    </script>
+
+
+
+
+    <!-- <script>
+        
+        var nameForm = document.querySelector(".nameForm");
+        var inputName = document.querySelector(".inputName");
+        var btn1 = document.getElementById("btn1");
+        btn1.onclick = function(){
+            console.log(inputName.value);
+            //nameForm.style.display="none";???
+            nameForm.innerHTML = inputName.value + "님 안녕하세요.";
+        }
+
+
+        var todoForm = document.querySelector(".todoForm");
+        var inputTodo = document.querySelector(".inputTodo");
+        var btn2 = document.getElementById("btn2");
+        btn2.onclick = function(){
+        
+            var li = document.createElement("li");
+            li.innerHTML = inputTodo.value + "<button type='button'>x</button>";
+            todoForm.appendChild(li);
+            
+        }
+
+    </script> -->
+</body>
+</html>

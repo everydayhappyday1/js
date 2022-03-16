@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    ul, li{
+        display: inline-block;
+    }
+</style>
+<body>
+    <div>
+        <ul class="imgs">
+            <li><img src="img/1.jpg" width="100"></li>
+            <li><img src="img/2.jpg" width="100"></li>
+            <li><img src="img/3.jpg" width="100"></li>
+            <li><img src="img/4.jpg" width="100"></li>
+        </ul><br>
+        결과:
+        <div class="result">
+            <img src="img/1.jpg" width="400" alt="대표 이미지" >
+        </div>
+    </div>
+    <script>
+        var result = document.querySelector(".result > img");
+        var imgs = document.querySelectorAll(".imgs > li >img");
+        
+        // for(var i=0; i<imgs.length; i++){
+        //     imgs[i].onclick = function(e){
+        //         result.src = e.target.src;                
+        //     }
+        // }
+
+        for(var i=0; i < imgs.length; i++){
+            imgs[i].addEventListener("click", handleImg);
+        }
+        function handleImg(){
+            //console.log(event.target);
+            result.src = event.target.src;
+        }
+    </script>
+</body>
+</html>

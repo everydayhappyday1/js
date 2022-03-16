@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" id="add">추가하기</button>
+    <ul class="list">
+        <!-- <li><a href="#">1.</a></li> -->
+    </ul>
+    <script>
+        var count = 0; // 전역변수 
+
+        var add = document.getElementById("add");
+        add.onclick = function(){
+            // li, a , 텍스트 태그가 필요 --> 생성한다.
+            var li = document.createElement("li"); // li 태그생성
+            var a = document.createElement("a");   // a  태그생성
+            var text = document.createTextNode(++count + ".문자열 생성");  // 문자열생성
+
+            a.href="https://www.naver.com"; // a의 속성 추가
+
+            // 추가하기 버튼 누르면 콘솔 창에 list, a, text 모두 생성된 것 확인 가능 
+            console.log(li);
+            console.log(a);
+            console.log(text);
+
+            // 자식 형태로 순서를 만들어준다. 
+            a.appendChild(text); // a 자식에 text를 넣는다. 
+            li.appendChild(a); // a를 잡아서 li에 넣어준다. 
+            document.querySelector(".list").appendChild(li); // ul클래스를 들고와서 li를 넣어준다. 
+
+        }
+    </script>
+</body>
+</html>

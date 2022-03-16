@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="title" >선택하세요</p>
+    <select id="selector" onclick="selec(this)">
+        <option value="1">선택</option>
+        <option value="2">안녕하세요</option>
+        <option value="3">Hello</option>
+        <option value="4">중국</option>
+    </select>
+    <script>
+        function selec(x){
+            var result = document.getElementById("title");
+            var selectOption = document.getElementById("selector");
+            console.log(selectOption.value);
+            console.log(result);
+            if(selectOption.value == '1'){
+                result ="선택하세요";
+                title.innerHTML = result;
+            }else if(selectOption.value == '2'){
+                result ="한국어";
+                title.innerHTML = result;
+            }else if(selectOption.value == '3'){
+                result ="영어";
+                title.innerHTML = result;
+            }else if(selectOption.value == '4'){
+                result ="중국어";
+                title.innerHTML = result;
+            }
+        }
+    </script>
+</body>
+</html>

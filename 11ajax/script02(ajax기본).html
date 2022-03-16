@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" onclick="ajax()">JSON파일읽기</button>
+    <script>
+        // 실행결과는 then으로 받는다.
+        function ajax(){
+            fetch("hi.json").then(function(response){
+                //console.log(response);
+                response.json().then(function(data){
+                    console.log(data);
+                    console.log(data.userId); // 값 가져오기 1
+                    console.log(data["userId"]); // 값 가져오기 2
+                    console.log(data.userPw); 
+                    console.log(data["userPw"]);
+                    console.log(data.userName); 
+                    console.log(data["userName"]);
+                });
+            });
+        }
+
+
+
+    </script>
+</body>
+</html>

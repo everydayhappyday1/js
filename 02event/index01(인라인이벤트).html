@@ -25,6 +25,8 @@
     </script>
     <hr>
 
+    <!-- 사용자가 어떤 버튼을 클릭했는가? 확인할 필요가 있다면, 이벤트 매개변수로 this를 준다.
+    태그에서 this를 사용하면 태그 자신을 가르키게 도니다ㅣ. -->
 
     <!-- 중요!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11 -->
     <h3>여러 버튼에 인라인 이벤트 적용하기</h3>
@@ -35,7 +37,7 @@
     <button type="button" id="c" onclick="check2(this)">3</button>
     <button type="button" id="d" onclick="check2(this)">4</button>
     <script>
-        function check2(x){ // 위의 this를 x로 받았다.
+        function check2(x){ // 위의 this를 x로 받아줄 수 있도록 매개변수 사용 
             console.log("이벤트 실행됨");
             console.log(x);
             console.log(x.type); // 태그가 가진 속성에 접근 가능

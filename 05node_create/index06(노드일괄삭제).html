@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {border-spacing: 0; border-collapse: collapse; }
+        th, td {
+            border: 1px solid #777;
+        }
+    </style>
+</head>
+<body>
+
+
+    <button type="button" id="btn">일괄삭제</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th><input type="checkbox" class="allCheck"></th>
+                <th>번호</th>
+                <th>이름</th>
+                <th>내용</th>
+            </tr>
+        </thead>
+        <tbody class="table">
+            <tr>
+                <td>
+                    <input type="checkbox" class="check">
+                </td>
+                <td>1</td>
+                <td>홍길동</td>
+                <td>안녕하세요</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" class="check">
+                </td>
+                <td>2</td>
+                <td>이순신</td>
+                <td>ㅋㅋㅋㅋ</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" class="check">
+                </td>
+                <td>3</td>
+                <td>홍길자</td>
+                <td>노트선택시간입니다</td>
+            </tr>
+            
+            
+            <tr>
+                <td>
+                    <input type="checkbox" class="check">
+                </td>
+                <td>4</td>
+                <td>신사임당</td>
+                <td>엘리먼트 순회?</td>
+            </tr>
+
+
+
+            <tr>
+                <td>
+                    <input type="checkbox" class="check">
+                </td>
+                <td>5</td>
+                <td>홍길동</td>
+                <td>안녕히계세요</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        // 삭제기능
+        // 버튼을 누르면 check되어있는 행을 얻는다.
+        // remove() 로 삭제한다.
+        var list = document.querySelectorAll(".check"); // arr
+        var btn = document.getElementById("btn");
+        btn.onclick = function(){
+            //console.log(list[0].value);
+            //console.log(list[0].checked);
+            for (var i=0; i<list.length; i++){
+                if(list[i].checked){
+                    //list[i].remove();
+                    list[i].parentElement.parentElement.remove();
+                }
+            }
+        }
+        
+        
+        // 전부 선택
+        var allCheck = document.querySelector(".allCheck");
+        allCheck.onclick = function(){
+            //console.log(allCheck.checked);
+            if(allCheck.checked){
+                for (var i=0; i<list.length; i++){ // 리스트 하위 박스 체크
+                    list[i].checked = true;
+                }
+            }else{
+                for (var i=0; i<list.length; i++){ // 리스트 하위 박스 체크
+                    list[i].checked = false;
+                }
+            }
+        }
+    </script>
+
+
+</body>
+</html>

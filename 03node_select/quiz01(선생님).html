@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form>
+        좌석:
+        <input type="checkbox" name="seat" value="1">1
+        <input type="checkbox" name="seat" value="2">2
+        <input type="checkbox" name="seat" value="3">3
+        <input type="checkbox" name="seat" value="4">4
+        <input type="checkbox" name="seat" value="5">5
+        <input type="checkbox" name="seat" value="6">6
+        <input type="checkbox" name="seat" value="7">7
+        <input type="checkbox" name="seat" value="8">8
+        <input type="checkbox" name="seat" value="9">9
+
+        <button type="button" id="btn">예약하기</button>
+
+    </form>
+
+    <script>
+        /*
+        1. 예약버튼을 클릭시 좌석이 최소 한개이상 체크되어 있는지 확인합니다.
+        2. 체크되어 있지 않다면 경고창을 띄우는 코드를 작성.
+        3. 체크되어 있다면 배열에 체크된 좌석을 추가.
+
+        4. JSON형태의 문자열로 변환시켜주세요.
+        */
+
+        var btn = document.getElementById("btn");
+        btn.onclick = function() {
+
+            var seat = document.getElementsByName("seat"); //배열
+            var bool = false; //체크여부를 확인할 변수
+            var arr = new Array(); //요소를 담을 배열
+
+            for(var i = 0; i < seat.length; i++) {
+               
+                if( seat[i].checked ) {
+                    arr.push(seat[i].value); //배열에 추가
+                    bool = true; //체크되었다는 뜻
+                }
+
+            }
+
+            if(bool) {
+                // 결과 출력
+                var str = JSON.stringify({data: arr});
+                console.log(str);
+            } else {
+                alert("좌석체크는 필수 입니다");
+            }
+
+
+        }
+
+    </script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" id="btn">이벤트 태그에서의 this</button>
+    <script>
+        // js의 thi는 자바의 this와 약간 차이점이 있따.
+        var x = 1;
+        function func(){
+            var x = 10;
+            console.log (x); // 지역변수 x 
+            console.log(this.x) // 전역변수 x
+            console.log(this); // window 객체 최상위 객체
+        }
+        func();
+        console.log("---------------");
+
+        //태그에서의 this  --> 버튼 태그를 가리키는 함수이므로 태그에서의 this
+        var btn = document.getElementById("btn");
+        btn.onclick = function(){
+            console.log(this); // 실행되고있는 태그 자신을 가리킴, 버튼 클릭해야 나온다.
+        }
+    </script>
+</body>
+</html>

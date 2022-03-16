@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    쿠키이름: <input type="text" id="key"><br>
+    쿠키값: <input type="text" id="val"><br>
+    <button type="button" id="createCookie">쿠키생성</button><br>
+
+    쿠기값확인: <input type="text" id="find">
+    <button type="button" id="findCookie">쿠키확인하기</button>
+
+    <script>
+        var createCookie = document.getElementById("createCookie");
+        createCookie.onclick = function(){
+            //쿠키생성
+            var key = document.getElementById("key").value;
+            var val = document.getElementById("val").value;
+            console.log(key, val);
+            //쿠키는 문자열 형태로 만든다. (단, 반드시 지켜야하는 형식이 있다.)
+            var date = new Date();//날짜객체
+            date.setDate(date.getDate()+7); // 현재일자 + 7일 // 7일간 유지되는 쿠키
+            var cookie = "";
+            cookie += key+"="+val+";";
+            cookie += "expires="+date.toUTCString()+";"; //toUTCString --> utc 기준시로 변경한다.
+            console.log(cookie);
+            document.cookie = cookie;  // 왼쪽쿠키는 도큐먼트 쿠키, 오른쪽은 우리가 만든 쿠키 // 둘은 다르다.
+        }
+
+        var findCookie = document.getElementById("findCookie"); // 버튼 연결
+        findCookie.onclick = function(){
+            var find = document.getElementById("find").value; // 입력값 (찾을 키값)
+            document.cookie; // 도큐먼트 안의 쿠키값 가져오기.
+            console.log(document.cookie);
+            // ; 기준으로 분할
+            var arr = document.cookie.split(";");
+            console.log(arr);
+            //반복
+            for(var i=0; i<arr.length; i++){
+                //console.log(arr[i]);
+                if(arr[i].indexOf(find)!=-1){ // 찾으면 위치 반환, 없으면 -1반환
+                    console.log(arr[i].replace(find+"=","")); //find+"=" 를 공백으로 치환한다. --> 키 없애고, 값만 받겠다는 뜻
+                                                                                                //인풋에 만들어둔 키를 입력했을 때!!!! 
+                }
+            }
+        }
+
+
+    </script>
+</body>
+</html>

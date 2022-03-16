@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        //콜백함수 (호출했을 때 결과를 돌려받는 함수 --> 콜 했을때 백 받는것을 의미. // 리턴과 다르다)
+        //동기적 콜백 : 실행순서대로 즉시 결과를 반환해주는
+        /*
+        function callbackFunc(success){
+            //함수를 매개변수로 받는다.
+            success(10); // a라는 매개변수가 있으니까 여기에 값을 넣어줌
+        }
+        //호출 (펑션에 매개변수 전달하기) --> success에 함수 넣어줌.
+        callbackFunc(function(a){ // --> 여기 매개변수에 들어가는 함수가 바로 콜백함수 // 함수 안의 a 매개값
+            console.log("동기적 콜백");
+            console.log(a);
+        });
+        */
+
+
+
+        /*
+        // 비동기적 콜백 (동기적 콜백의 반대) --> 132 순으로 실행됨 // 원래대로라면 123으로 실행되야 함.
+        // 순서를 지키지 않고, 결과를 반환받는다.
+        function asyncFunc(success){
+            setTimeout(success, 2000); //2초 뒤 실행
+        }
+        console.log(1)
+        //기능실행
+        asyncFunc(function(){
+            console.log(2);
+        });
+        console.log(3)
+        */
+
+
+
+
+        //navigator에서 사용할 수 있는 기능 확인하기 (dir)
+        //console.dir(navigator);
+        
+        // 이렇게 한 줄로 쓰거나
+        //navigator.geolocation.getCurrentPosition(function(){},function(){});
+
+        //함수를 만들어 놓고 함수 이름 불러쓸수도 있고.
+        //성공시 콜백함수 첫번째 매개변수에 실행결과에 대한 정보를 넣어준다.
+        function success(position){ 
+            console.log(position);
+            console.log(position.timeStamp); // 접근한 시간
+            console.log(position.coords.latitude); //위도
+            console.log(position.coords.longitude); //경도
+
+        }
+        //실패시 콜백함수 첫번째 매개변수에 실패에 대한 결과를 넣어준다.
+        function fail(error){
+            alert("위치정보를 받는데 실패했습니다.");
+        }
+        navigator.geolocation.getCurrentPosition(success,fail); // 성공하면 seccess를 위의 함수로 전달
+                                                                // 실패하면 fail을 위의 함수로 전달
+
+
+    </script>
+</body>
+</html>

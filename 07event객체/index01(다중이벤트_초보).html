@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>동일한 형태의 태그에 이벤트를 걸어서 즉시 처리하려면??</h3>
+    <ul>
+        <li class="list">1. 홍길동</li>
+        <li class="list">2. 이순신</li>
+        <li class="list">3. 바둑이</li>
+        <li class="list">4. 나과자</li>
+        <li class="list">5. 호호호</li>
+    </ul>
+    선택된 태그의 값
+    <p class="result">
+
+    </p>
+    <script>
+        var list = document.querySelectorAll(".list");
+        var result = document.querySelector(".result");
+        // 코드가 1만개라면 이벤트도 1만번 생성되어야 하기 때문에 좋은 코드는 아니다.
+        for(var i=0; i<list.length; i++){
+            list[i].onclick = function(e){ // e를 넣어주면 이벤트 사용 가능 // e가 없으면 event라고 써야 함
+                // 이벤트가 발생되면, 이벤트 함수에 arguments의 event객체를 넣어주게 되어있다. 
+                // event 이름으로 이벤트 정보를 얻을 수 있다. 
+                //console.log(arguments);
+                //console.log(event); // arguments의 0번째에 있던 PointEvent가 출력된다. (콘솔에서 target에 가보자)
+                //console.log(event.target); // --> 어떤 대상을 클릭했는지 알려준다. (== 이벤트가 발생한 위치를 알려줌)
+                //console.dir(event.target); // 이걸 클릭하면 어떤걸 사용할 수 있는지 알려줌.
+                result.innerHTML = e.target.innerHTML; // 위 function에 e를 넣어주면 이벤트 사용 가능 // e가 없으면 event라고 써야 함
+                //result.innerHTML = event.target.innerHTML;
+            }
+        }
+    </script>
+</body>
+</html>

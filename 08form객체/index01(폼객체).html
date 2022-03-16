@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        폼태그의 검증
+        1. required, pattern=정규표션식
+     -->
+    <form action="#" name="joinForm">
+        아이디: <input type="text" name="id"><br>
+        비밀번호: <input type="password" name="pw"><br>
+        지역: 
+        <select name="region">
+            <option> 선택 </option>
+            <option> 서울 </option>
+            <option> 경기 </option>
+        </select>
+        <br>
+        자기소개:<br>
+        <textarea name="intro" cols="50" rows="10"></textarea>
+        전공<br>
+        <input type="checkbox" name="inter">자바
+        <input type="checkbox" name="inter">제이에스
+        <input type="checkbox" name="inter">데이터베이스
+        <br><br><br>
+
+        <button type="submit" class="btn">가입</button>
+    </form>
+    <script>
+        //var btn = document.querySelector(".btn");
+        btn.onclick = function(){
+            event.preventDefault(); // submit 버튼 중단
+            /*
+            폼 객체는 document의 하위 객체이기 때문에, form의 name 속성으로 접근할 수 있다.
+            input태그는 document.폼이름.인풋이름  으로 접근한다.
+            */
+            console.log(document.joinForm.id);
+            console.log(document.joinForm.pw);
+
+            if(document.joinForm.id.value == ''){ // 아이디값이 공백이라면 
+                alert("아이디는 필수입니다.");
+                document.joinForm.id.focus(); // 태그에 포커스
+                return; // 함수종료
+            } else if(document.joinForm.id.value.length < 4){ //아이디가 4글자 이하라면
+                alert("아이디는 4글자 이상이어야 합니다. ");
+                document.joinForm.id.focus(); // 태그에 포커스
+                return;
+            } else if(document.joinForm.pw.value == ''){
+                alert("비밀번호는 필수입니다.");
+                document.joinForm.pw.focus();
+                return; // 함수종료
+            } else if(document.joinForm.pw.value.length < 4){ //아이디가 4글자 이하라면
+                alert("패스워드는 4글자 이상이어야 합니다. ");
+                document.joinForm.pw.focus(); // 태그에 포커스
+                return;
+            }else if(document.joinForm.region.value == '선택'){
+                alert("지역을 선택해주세요");
+                return;
+            } else {
+                var inter = document.getElementsByName("inter");
+                var bool = true;
+                for(var i=0; i<inter.length; i++){
+                    if(inter[i].checked){ // 체크박스 체크 여부
+                        bool = false;
+                        break;
+                    }
+                }
+                if(bool){
+                    alert("전공 선택은 필수입니다.");
+                    return;
+                }
+            }
+
+            //폼태그 (JS로 폼 전송)
+            document.joinForm.submit();
+
+        }
+    </script>
+</body>
+</html>

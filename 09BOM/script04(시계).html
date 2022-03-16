@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @keyframes fadeIn{
+            from{
+                opacity: 0;
+            }to{
+                opacity: 1;
+            }
+        }
+        .bgImg{
+            /* 이미지태그 뒤에 이미지가 깔리도록 하는 형식 */
+            /* position:absolute : 포지션 릴레이티브가 없으면 바디 기준으로 떠오르는 법칙*/
+            position: absolute; 
+            top: 0;
+            left: 0;
+            /* z축 높이 제어: z-index */
+            /* -1 : 가장 뒤로 */
+            z-index:-1;
+            animation: fadeIn .5s linear;
+        }
+        .clock > h2 {
+            font-size: 30px;
+            text-align: center;
+            color: #fff;
+            margin-top: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <h2>00:00:00</h2>
+    </div>
+    <script>
+        function createTime(){
+            //1초마다 시간을 만들어서 clock아래의 h2에 innerHTML로 변경.
+            var date = new Date(); // 현재 시간
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var seconds = date.getSeconds();
+            //얻어온 시분초를 문자열로 만들기 (10초 이하이면 앞에 0붙여주기 - 삼항연산식 사용)
+            var time = (hours<10? "0"+hours : hours)+":"+
+                       (minutes<10? "0"+minutes : minutes)+":"+
+                       (seconds<10? "0"+seconds : seconds);
+            //h2에 1초마다 변하는 값을 넣어주기
+            var h2 = document.querySelector(".clock > h2");
+            h2.innerHTML = time; // h2에 타임 저장
+        }
+        //배경 인터벌
+        var num = 0
+        function changeBack(){
+            var img = document.createElement("img"); // 이미지 태그 생성
+            img.src = "imgs/"+ (++num) +".jpg";
+            img.classList.add("bgImg");// 이미지에 클래스 주기 
+            //바디에 이미지 넣기
+            document.body.appendChild(img);
+            // 넘버값 0으로 되돌리기
+            if(num===4) num=0;
+        }
+        // 시간 인터벌
+        (function(){
+            createTime(); // 바로시작 00:00:00 안보임
+            setInterval(createTime, 1000);
+
+            changeBack(); // 바로 배경 변경
+            setInterval(changeBack,3000); // 3초, 10000이면 10초마다 변경
+        })();
+
+
+    </script>
+</body>
+</html>

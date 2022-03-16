@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <p id="title">단어를 선택하세요</p>
+
+    <select id="selector" >
+        <option>선택</option>
+        <option>hello</option>
+        <option>안녕하세요</option>
+        <option>듕귁에 달아</option>
+    </select>
+    <script>
+        var selector = document.getElementById("selector");
+        selector.onchange = function() {
+            //option은 select태그의 value입니다
+            //console.log(selector.value);
+            var title = document.getElementById("title"); //title인 태그
+
+            if(selector.value == "hello") {
+                title.innerHTML = "영어 입니다";
+            } else if(selector.value == "안녕하세요") {
+                title.innerHTML = "한국어 입니다";
+            } else if(selector.value == "듕귁에 달아") {
+                title.innerHTML = "중국어 입니다";
+            } else { //선택인 경우
+                title.innerHTML = "단어를 선택하세요";
+            }
+        }
+
+    </script>
+
+
+
+
+</body>
+</html>

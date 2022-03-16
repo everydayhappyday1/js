@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" id="add">추가하기</button>
+    <button type="button" id="rev">삭제하기</button>
+
+    <ul class="list">
+
+    </ul>
+    <script>
+        var count = 0; // 전역변수 
+        var add = document.getElementById("add");
+        add.onclick = function(){
+        // li, a , 텍스트 태그가 필요 --> 생성한다.
+        var li = document.createElement("li"); // li 태그생성
+        var a = document.createElement("a");   // a  태그생성
+        var text = document.createTextNode(++count + ".문자열 생성");  // 문자열생성
+        a.href="https://www.naver.com"; // a의 속성 추가
+
+        // 자식 형태로 순서를 만들어준다. 
+        a.appendChild(text); // a 자식에 text를 넣는다. 
+        li.appendChild(a); // a를 잡아서 li에 넣어준다. 
+        document.querySelector(".list").appendChild(li); // ul클래스를 들고와서 li를 넣어준다. 
+
+}
+
+
+        var rev = document.getElementById("rev");
+        rev.onclick = function(){
+            // 하나의 li 태그를 삭제하기 
+            var list = document.querySelector(".list");
+            //list.removeChild(자식요소); 근데 자식요소가 여러개야, 어떻게 선택??
+            //console.dir(list); // 점 찍어서 사용할 수 있는 기능 리스트 출력
+            console.log(list.children); // 엘리먼트 형태만 선택 
+            console.log(list.childNodes); // text, 주석, 엘리먼트를 모두 선택
+            console.log(list.children[0]); // 0번째 자식 요소
+            console.log(list.children[list.children.length-1]); // 마지막 자식 요소
+
+            //list.removeChild(list.children[0]);
+            //list.removeChild(list.children[list.children.length-1]);
+            list.remove(list.children[0]);
+        }
+   </script>
+</body>
+</html>
